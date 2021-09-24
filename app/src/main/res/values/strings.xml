@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SimFormDemo</string>
+    <string name="email">Email</string>
+    <string name="age">Age</string>
+    <string name="phone">Phone</string>
+    <string name="gender">Gender</string>
+    <string name="location">State</string>
+    <string name="postcode">Post Code</string>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+</resources>
