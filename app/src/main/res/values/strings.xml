@@ -8,4 +8,5 @@
     <string name="postcode">Post Code</string>
     <string name="city">City</string>
     <string name="country">Country</string>
+    <string name="no_data_available">No Data Available</string>
 </resources>

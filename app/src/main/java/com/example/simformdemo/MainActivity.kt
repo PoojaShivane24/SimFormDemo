@@ -3,6 +3,7 @@ package com.example.simformdemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,14 +33,19 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, UserViewModelFactory(repository)).get(UserViewModel::class.java)
 
         viewModel.user.observe(this, {
-            if (userAdapter == null) {
-                userAdapter = UserAdapter(this, it)
-                mainBinding.rvUserList.adapter = userAdapter
+            if (it?.isNotEmpty() == true) {
+                mainBinding.tvInfo.visibility = View.GONE
+                if (userAdapter == null) {
+                    userAdapter = UserAdapter(this, it)
+                    mainBinding.rvUserList.adapter = userAdapter
+                } else {
+                    userAdapter?.updateList(it)
+                }
+                Log.e(TAG, "onCreate: it " + it.toString())
+                Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show()
             } else {
-                userAdapter?.updateList(it)
+                mainBinding.tvInfo.visibility = View.VISIBLE
             }
-            Log.e(TAG, "onCreate: it "+it.toString() )
-            Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show()
         })
     }
 }
